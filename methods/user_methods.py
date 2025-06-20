@@ -32,6 +32,15 @@ class UserMethods:
         params = {'email': email, 'password': password + 'a'}
         response = requests.post(f'{Url.BASE_URL}{Url.LOGIN_USER}', data = params)
         return response
+
+    @staticmethod
+    def login_user_incorrect_email(body):
+        email = (body[1])
+        password = (body[2])
+        params = {'email': email + 'a', 'password': password}
+        response = requests.post(f'{Url.BASE_URL}{Url.LOGIN_USER}', data=params)
+        return response
+
     @staticmethod
     def delete_user(access_token):
         params = {"Authorization": access_token}
