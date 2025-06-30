@@ -14,12 +14,6 @@ class MessageAnswer:
     ERR_INCORRECT_DATA = 'email or password are incorrect'
     ERR_NOT_AUTH = 'You should be authorised'
 
-class UserDataForChange:
-    DATA_CHANGE = [
-        ["email", fake.email()],
-        ["password", "changepass"],
-        ["name", "changename"]
-    ]
 
 class DataIngredients:
     VALID_INGREDIENTS = {

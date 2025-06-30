@@ -1,13 +1,13 @@
 import allure
 import pytest
 
-import data
+import generators
 from methods.user_methods import UserMethods
 
 
 class TestChangeUserData:
     @allure.title("Изменение данных авторизированного пользователя")
-    @pytest.mark.parametrize('key, value', data.UserDataForChange.DATA_CHANGE)
+    @pytest.mark.parametrize('key, value', generators.UserDataForChange.DATA_CHANGE)
     def test_change_auth_user_data(self, generate_user_data, key, value):
         with allure.step('Создаем пользователя'):
             UserMethods.create_user(generate_user_data[0])
@@ -20,7 +20,7 @@ class TestChangeUserData:
             assert change_response.status_code == 200 and change_response.json()["success"] == True
 
     @allure.title("Изменение данных неавторизированного пользователя")
-    @pytest.mark.parametrize('key, value', data.UserDataForChange.DATA_CHANGE)
+    @pytest.mark.parametrize('key, value', generators.UserDataForChange.DATA_CHANGE)
     def test_change_not_auth_user_data(self, generate_user_data, key, value):
         with allure.step('Создаем пользователя и получаем токен'):
             access_token = UserMethods.create_user(generate_user_data[0]).json().get("accessToken")
