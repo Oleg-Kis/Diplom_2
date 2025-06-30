@@ -6,4 +6,3 @@ class Url:
     CREATE_ORDER = '/api/orders' #POST
     GET_USER_ORDERS = '/api/orders' #GET
     DELETE_USER = '/api/auth/user' #DELETE
-    GET_TOKEN_USER = '/api/auth/token' #POST

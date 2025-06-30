@@ -20,6 +20,6 @@ class TestCreateUser:
 
     @allure.title("Создание пользователя без поля Имя")
     def test_not_create_user_without_name(self, generate_user_data):
-        with allure.step('Создаем тело запроса без пол Имя'):
+        with allure.step('Создаем пользователя без поля Имя'):
             courier = UserMethods.create_user_without_name(generate_user_data)
         assert courier.status_code == 403 and courier.json()["message"] == MessageAnswer.ERR_WITHOUT_NAME

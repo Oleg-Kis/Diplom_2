@@ -6,7 +6,7 @@ from urls import Url
 class UserMethods:
     @staticmethod
     def create_user(body):
-        response = requests.post(f'{Url.BASE_URL}{Url.CREATE_USER}', json = body)
+        response = requests.post(f'{Url.BASE_URL}{Url.CREATE_USER}', json=body)
         return response
 
     @staticmethod
@@ -14,7 +14,7 @@ class UserMethods:
         email = (body[1])
         password = (body[2])
         params = {"email": email, "password": password}
-        response = requests.post(f'{Url.BASE_URL}{Url.CREATE_USER}', params = params)
+        response = requests.post(f'{Url.BASE_URL}{Url.CREATE_USER}', params=params)
         return response
 
     @staticmethod
@@ -22,7 +22,7 @@ class UserMethods:
         email = (body[1])
         password = (body[2])
         params = {'email': email, 'password': password}
-        response = requests.post(f'{Url.BASE_URL}{Url.LOGIN_USER}', data = params)
+        response = requests.post(f'{Url.BASE_URL}{Url.LOGIN_USER}', data=params)
         return response
 
     @staticmethod
@@ -30,7 +30,7 @@ class UserMethods:
         email = (body[1])
         password = (body[2])
         params = {'email': email, 'password': password + 'a'}
-        response = requests.post(f'{Url.BASE_URL}{Url.LOGIN_USER}', data = params)
+        response = requests.post(f'{Url.BASE_URL}{Url.LOGIN_USER}', data=params)
         return response
 
     @staticmethod
@@ -43,8 +43,8 @@ class UserMethods:
 
     @staticmethod
     def delete_user(access_token):
-        params = {"Authorization": access_token}
-        response = requests.delete(f'{Url.BASE_URL}{Url.DELETE_USER}', data = params)
+        headers = {"Authorization": access_token}
+        response = requests.delete(f'{Url.BASE_URL}{Url.DELETE_USER}', headers=headers)
         return response
 
     @staticmethod
@@ -53,3 +53,9 @@ class UserMethods:
         response = requests.post(f'{Url.BASE_URL}{Url.LOGIN_USER}', data=params)
         access_token = response.json().get("accessToken")
         return access_token
+
+    @staticmethod
+    def change_user_data(access_token, new_data):
+        headers = {"Authorization": access_token}
+        response = requests.patch(f'{Url.BASE_URL}{Url.CHANGE_USER_DATA}', headers=headers, data=new_data)
+        return response
