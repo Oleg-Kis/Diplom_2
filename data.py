@@ -23,3 +23,6 @@ class DataIngredients:
     NOT_VALID_INGREDIENTS = {
     "ingredients": ["61c0c5a71d1f82001bdaaa6","61c0c5a71d1f82001bdaaa6"]
     }
+
+class FakeEmailNotAuth:
+    email = fake.free_email()
