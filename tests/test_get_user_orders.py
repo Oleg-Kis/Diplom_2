@@ -20,7 +20,7 @@ class TestGetUserOrders:
             assert orders.status_code == 200 and orders.json()["success"] == True and type(orders.json()["orders"]) == list
 
     @allure.title("Получение заказов неавторизированного пользователя")
-    def test_get_orders_auth_user(self, generate_user_data):
+    def test_get_orders_not_auth_user(self, generate_user_data):
         with allure.step('Создаем пользователя и получаем токен'):
             access_token = UserMethods.create_user(generate_user_data[0]).json().get("accessToken")
         with allure.step('Создаем заказ'):
